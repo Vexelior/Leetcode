@@ -27,6 +27,6 @@ public static class Program
         }
 
         // Return the common prefix found
-        return first.Substring(0, iteration);
+        return first[..iteration];
     }
 }
