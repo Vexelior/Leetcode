@@ -13,6 +13,8 @@ The solution is implemented in C# using the following method:
 ```csharp
     private static ListNode? MergeTwoLists(ListNode? list1, ListNode? list2)
     {
+    private static ListNode? MergeTwoLists(ListNode? list1, ListNode? list2)
+    {
         if (list1 == null)
         {
             return list2;
@@ -23,35 +25,17 @@ The solution is implemented in C# using the following method:
             return list1;
         }
 
-        ListNode dummy = new ListNode(0);
-        ListNode current = dummy;
-
-        while (list1 != null && list2 != null)
+        if (list1._val < list2._val)
         {
-            if (list1._val < list2._val)
-            {
-                current._next = list1;
-                list1 = list1._next;
-            }
-            else
-            {
-                current._next = list2;
-                list2 = list2._next;
-            }
-            current = current._next;
+            list1._next = MergeTwoLists(list1._next, list2);
+            return list1;
         }
-
-        if (list1 != null)
+        else
         {
-            current._next = list1;
+            list2._next = MergeTwoLists(list1, list2._next);
+            return list2;
         }
-
-        if (list2 != null)
-        {
-            current._next = list2;
-        }
-
-        return dummy._next;
+    }
     }
 ```
 
