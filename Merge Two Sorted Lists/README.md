@@ -42,23 +42,19 @@ The solution is implemented in C# using the following method:
 ### Key Steps in the Algorithm:
 
 1. **Handle Edge Cases**:
-   - If either `list1` or `list2` is `null`, return the other list.
-2. **Initialize a Dummy Node**:
-   - Create a dummy node to simplify the merging process.
-   - Use a pointer `current` to track the end of the merged list.
-3. **Merge the Lists**:
-   - Use a `while` loop to iterate through both lists.
-   - Compare the values of the current nodes in `list1` and `list2`.
-   - Append the smaller node to the merged list and move the pointer of that list forward.
-4. **Append Remaining Nodes**:
-   - After the loop, if there are remaining nodes in either list, append them to the merged list.
-5. **Return the Merged List**:
-   - Return the next node of the dummy node, which is the head of the merged list.
+   - If `list1` is null, return `list2`.
+   - If `list2` is null, return `list1`.
+2. **Compare Values**:
+   - If the value of the current node in `list1` is less than that in `list2`, set the next node of `list1` to the result of merging the next node of `list1` with `list2`.
+   - Otherwise, set the next node of `list2` to the result of merging `list1` with the next node of `list2`.
+3. **Return the Merged List**:
+   - The function returns the head of the merged list, which is either `list1` or `list2`, depending on which node had the smaller value.
+   - The recursion continues until all nodes from both lists are processed.
 
 ### Complexity Analysis:
 
-- **Time Complexity**: O(n + m), where `n` is the number of nodes in `list1` and `m` is the number of nodes in `list2`. We traverse both lists once.
-- **Space Complexity**: O(1), as we are using a constant amount of extra space (the dummy node).
+- **Time Complexity**: O(n + m), where n is the number of nodes in `list1` and m is the number of nodes in `list2`. Each node is processed exactly once.
+- **Space Complexity**: O(n + m) for the recursive stack space, where n and m are the lengths of the two lists. However, if we use an iterative approach with a dummy node, the space complexity can be reduced to O(1) for the merged list.
 
 ## Example Usage
 
