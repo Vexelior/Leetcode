@@ -13,8 +13,6 @@ The solution is implemented in C# using the following method:
 ```csharp
     private static ListNode? MergeTwoLists(ListNode? list1, ListNode? list2)
     {
-    private static ListNode? MergeTwoLists(ListNode? list1, ListNode? list2)
-    {
         if (list1 == null)
         {
             return list2;
@@ -35,7 +33,6 @@ The solution is implemented in C# using the following method:
             list2._next = MergeTwoLists(list1, list2._next);
             return list2;
         }
-    }
     }
 ```
 
